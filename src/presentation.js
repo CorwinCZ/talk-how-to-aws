@@ -37,6 +37,88 @@ const theme = createTheme(
   },
 );
 
+/*
+SECTION 1
+
+Intro
+I have a project and I need to deploy it. 
+Where to?
+
+Option A - Buy HW, plug to wall and be happy
+Option B - Buy VPS / EC2 instance and be happy too
+Option C - Buy pre-made services and be happy three
+
+Project XY
+
+IoT based project
+Starts as a hobby of developer
+Continues by acquiring one or two customers
+Grows world wide
+
+Hobby phase
+Buys RabsperyPi, one or two discs, plugs everything together and works on it
+ADV - cheap and fast to acquire, one time cost, opprotunity to learn new stuff
+DIS - management time is high, lot of non-product related issues (technical overhead). No fail-over - cannot be used in production. 
+
+Note - mention on premise data centers - for information protection, or when HW is your product. Or when HW is part of project - part of car / train / machine
+
+
+Why not recomended:
+* Technical overhead
+* high up-front cost of full server
+* Costly upgrades / downgrades
+* Hard to impelemnt scalability / fail-overs
+
+
+Few customers acquired
+Got a few customers, they are paying and they require relailable up-time. Moves SW to Docker and deploys to VPS / AWS EC2 / some other cloud. Set's up load balancers. 
+ADV - doesn't care about HW and it's problems - pays for processing power. Can upscale / downscale size of instaces when needed. Application can be deployed on multiple physical locations
+DIS - scalability can be harder to implement - differs on provider. You pay for iddle time.
+
+Notes
+* VPS / EC2 can be made much more relailable - using automated scaling, automated infrastructure deployment. Can be used all across the world. 
+
+When recomended
+
+* For highly specific needs which are not covered by services
+* For migrating existing projects / code bases to multiple locations - migration from on-premise HW
+
+When not recomended
+* Your needs can be covered by existing services
+* When regulations require from you to own HW on which data / app are
+
+Grows World-wide
+Got a plenty of customers, short response times, relailability, paralelization of tasks and data close to customer are required. Big data processing - BigData - data ammount which can't be processed on single computer. Peak workload.
+Rewrites from custom servers to cloud Services. Buys Lambdas, managed DB, StepFunctions, Analytics services. Buys dedicated IoT services. 
+
+ADV - pay for what you use. Paralelization without problems on scale. Don't care about HW at all. Can process unlimited ammount of users / requests. Services can be compatible with standard tools (AWS Aurora, AWS ElasticSearch Service). Relailability guranteed by provider. Distributed system / code.
+DIS - Distributed system / code. Limited capabilities of services. Vendor lock-in. Services often behind nevest releases.
+
+
+SECTION 2
+
+Problem 1 - I have a running project in VPS. One part of it takes 80% of computation time and it runs only from time to time. Big text processing. - Move to Lambda
+
+Problem 2 - I have a DB / queue system which takes a lot of maintence to operate. Doesn't provide business value on it's own. - buy DB / queue system (Aurora, RDS, ElasticSearch Service, SQS, AWS Dynamo DB)
+
+Problem 3 - I need to deliver static / generated content to lot of users across across lot of places - CDN
+
+Problem 4 - I need to store / process a lot of data - tera / peta bytes - S3 + Lambda
+
+Problem 5 - I need a small API that just stores incomming data - API gateway + S3
+
+
+How to AWS?
+
+S3 + IAM
+
+Continue with Lambdas, API gateway, SQS
+
+AWS Free tier - two types. Free year and free parts of services.
+
+Note - other providers have alternative services - move somewhere up.
+*/
+
 export default class Presentation extends Component {
   renderAppearListItem = inputString => (
     <Appear>
@@ -49,336 +131,199 @@ export default class Presentation extends Component {
       <Deck transition={['fade']} transitionDuration={500} theme={theme}>
         <Slide bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            From service to Lambda
+            How to AWS
           </Heading>
+          <br />
           <Text margin="10px 0 0" textColor="tertiary" size={1} bold>
             Petr Čaněk
           </Text>
           <br />
-          <Link
-            href="http://talk-from-service-to-lambda.surge.sh"
-            taget="_blank"
-          >
-            http://talk-from-service-to-lambda.surge.sh
+          <Text margin="10px 0 0" textColor="tertiary" size={1} bold>
+            Jakub Buriánek
+          </Text>
+          <br />
+          <Link href="TODO - add real link" taget="_blank">
+            TODO - add real link
           </Link>
         </Slide>
 
-        {/* --- Problem description --- */}
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            I have a project!
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            It's working!
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            On my local...
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="secondary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            Where should I deploy it?
+          </Heading>
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={3} textColor="secondary" caps>
-            The problem
+            Buy my own HW
           </Heading>
           <List>
-            {this.renderAppearListItem(`Data import`)}
-            {this.renderAppearListItem(`.xml file of various sizes`)}
-            {this.renderAppearListItem('Size ranging from few MB to ~300MB 💽')}
-            {this.renderAppearListItem(`Hundreds of items on average 💯`)}
-            {this.renderAppearListItem(`Periodic - every 15 minutes ⏱️`)}
+            {this.renderAppearListItem(
+              `Buy server + rack, PC, Raspberry Pi...`,
+            )}
+            {this.renderAppearListItem(`Plug to electricity & internet`)}
+            {this.renderAppearListItem(
+              `Back-up HW / electricity & internet connection`,
+            )}
+            {this.renderAppearListItem(
+              'Configure HW - OS, virtualization, monitoring',
+            )}
+            {this.renderAppearListItem(
+              'Configure SW - HTTP servers, DB, firewall',
+            )}
+            {this.renderAppearListItem(`Run your software on it`)}
+            {this.renderAppearListItem(`Bee happy 🐝`)}
           </List>
         </Slide>
 
-        <Slide bgColor="quaternary">
-          <Image src={easyJob} />
-        </Slide>
-
-        {/* --- Data processing --- */}
         <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Data processing
+          <Heading size={3} textColor="secondary" caps>
+            Buy virtual server
           </Heading>
           <List>
-            {this.renderAppearListItem(`Convert .xml to JSON objects`)}
-            {this.renderAppearListItem(`Translate keys from 🇩🇪 to 🇬🇧`)}
+            {this.renderAppearListItem(`VPS - virtual private server`)}
             {this.renderAppearListItem(
-              `Download attachments (few dozens per item) 🖼️`,
+              `Blue Ocean, OVH, Forpsi, AWS EC2, Google Cloud VPS, Azure VPS`,
             )}
             {this.renderAppearListItem(
-              `Call 3th party API to enrich part of data (slow and throttling requests)`,
+              'Configure SW - HTTP servers, DB, firewall',
             )}
-            {this.renderAppearListItem(`Store data by calling our API`)}
+            {this.renderAppearListItem(`Run your software on it`)}
+            {this.renderAppearListItem(`Bee happy too 🐝 🐝`)}
           </List>
         </Slide>
 
-        {/* --- Requirements --- */}
         <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Requirements
+          <Heading size={3} textColor="secondary" caps>
+            Buy pre-made services
           </Heading>
           <List>
-            {this.renderAppearListItem(`No data loss`)}
             {this.renderAppearListItem(
-              `3th party service fails -> continue without it`,
+              `S3, AWS Lambda, AWS RDS, AWS Aurora, AWS DynamoDB`,
             )}
             {this.renderAppearListItem(
-              `It will change - a lot. New enrichments, new data sources`,
+              'Configure SW - HTTP servers, DB, firewall',
             )}
-            {this.renderAppearListItem(
-              `Architecture, components or code should be re-used by other projects / imports`,
-            )}
-            {this.renderAppearListItem(`Automate - everything! 🤖`)}
+            {this.renderAppearListItem(`Run your software on it`)}
+            {this.renderAppearListItem(`Bee happy tree 🐝 🐝 🐝 🌳`)}
           </List>
         </Slide>
 
-        {/* --- Lets do it --- */}
-        <Slide bgColor="quaternary">
-          <Image src={letsDoIt} />
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            The Project
+          </Heading>
         </Slide>
 
-        {/* --- Service / Server way --- */}
-        <Slide bgColor="secondary" textColor="primary">
-          <Heading size={2} textColor="primary" caps>
-            Service / server
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            Happy Bees 🐝 🐝 🐝
           </Heading>
-          <Text size={1} textColor="tertiary" bold>
-            The "traditional" way
+
+          <Text size={1} textColor="secondary" bold>
+            On trees 🌳 🌳 🌳
           </Text>
         </Slide>
 
-        {/* --- Server set-up --- */}
         <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Server set-up
+          <Heading size={3} textColor="secondary" caps>
+            Project description
           </Heading>
           <List>
+            {this.renderAppearListItem(`IoT project helping bees on trees`)}
+            {this.renderAppearListItem(`Starts as hobby of one developer`)}
             {this.renderAppearListItem(
-              `Node.js server in docker, running in AWS EC2 instance`,
+              `Grows over time - acquisition of few customers from local town`,
             )}
             {this.renderAppearListItem(
-              `Took the file and called bunch of functions in chain`,
-            )}
-            {this.renderAppearListItem(`1 - Split into chunks ✔️`)}
-            {this.renderAppearListItem(`2 - Translate keys ✔️`)}
-            {this.renderAppearListItem(`3 - Download attachments ✔️`)}
-            {this.renderAppearListItem(`4 - Call 3th party API ✔️`)}
-            {this.renderAppearListItem(
-              `5 - Send data to our API for storage ✔️`,
+              `Becomes 🦄 start-up - grows world-wide`,
             )}
           </List>
         </Slide>
 
-        {/* --- Advantages --- */}
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            Hobby phase
+          </Heading>
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Server advantages 👍
+          <Heading size={3} textColor="secondary" caps>
+            Buy your own HW
           </Heading>
           <List>
+            {this.renderAppearListItem(`Buy IoT HW and deploy it`)}
+            {this.renderAppearListItem(`Buy Raspberry Pi, few discs`)}
             {this.renderAppearListItem(
-              `Creation of new server is easy - been there, done that`,
+              `Run server and client app on the Raspbery`,
             )}
-            {this.renderAppearListItem(`All code in one repository`)}
-            {this.renderAppearListItem(
-              `Easy to use - give the file, run command, wait for output`,
-            )}
+            {this.renderAppearListItem(`Uses everything for prototyping`)}
           </List>
         </Slide>
 
-        {/* --- Disadvantages --- */}
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
-            Server disadvantages 👎
+            Own HW advantages 👍
           </Heading>
           <List>
-            {this.renderAppearListItem(`This is "naive" implementation`)}
+            {this.renderAppearListItem(`Cheap and fast to acquire`)}
+            {this.renderAppearListItem(`One time, up-front cost`)}
+            {this.renderAppearListItem(`Opportunity to learn new stuff`)}
+          </List>
+        </Slide>
+
+        {/*
+          Hobby phase
+Buys RabsperyPi, one or two discs, plugs everything together and works on it
+ADV - cheap and fast to acquire, one time cost, opprotunity to learn new stuff
+DIS - management time is high, lot of non-product related issues (technical overhead). No fail-over - cannot be used in production. 
+
+Note - mention on premise data centers - for information protection, or when HW is your product. 
+Or when HW is part of project - part of car / train / machine
+
+
+Why not recomended:
+* Technical overhead
+* high up-front cost of full server
+* Costly upgrades / downgrades
+* Hard to impelemnt scalability / fail-overs
+        */}
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Own HW disadvantages 👎
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`Management time is high`)}
             {this.renderAppearListItem(
-              `When the process fails, data can be lost`,
+              `Lot of non-product related issues - technical overhead`,
             )}
-            {this.renderAppearListItem(`Hard monitoring of status`)}
-            {this.renderAppearListItem(`Only code can be shared`)}
+            {this.renderAppearListItem(`No fail-over / back-ups`)}
+            {this.renderAppearListItem(
+              `Not production ready - only for prototyping`,
+            )}
             {this.renderAppearListItem(
               `Cost - server was iddle most of the time 💸`,
             )}
           </List>
-        </Slide>
-
-        {/* --- Server cost image --- */}
-        <Slide bgColor="quaternary">
-          <Image src={serverBudget} />
-        </Slide>
-
-        {/* --- Possible improvements --- */}
-        <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Possible improvements 📈
-          </Heading>
-          <List>
-            {this.renderAppearListItem(`Use queues in between of steps`)}
-            {this.renderAppearListItem(`Split into multiple services`)}
-            {this.renderAppearListItem(
-              `Enrichment and file splitting should be separate processes`,
-            )}
-            {this.renderAppearListItem(
-              `Don't use JavaScript for file processing...`,
-            )}
-          </List>
-        </Slide>
-
-        {/* --- Lambda / serverless --- */}
-        <Slide bgColor="secondary" textColor="primary">
-          <Heading size={2} textColor="primary" caps>
-            Lambda serverless
-          </Heading>
-          <Text size={1} textColor="tertiary" bold>
-            The "cool" way
-          </Text>
-        </Slide>
-
-        {/* --- Lambda description --- */}
-        <Slide bgColor="quaternary" bgImage={lambdaDiagram} />
-
-        {/* --- Such Lambda --- */}
-        <Slide bgColor="quaternary">
-          <Image src={suchLambda} />
-        </Slide>
-
-        {/* --- Lambda price --- */}
-        <Slide bgColor="quaternary">
-          <Image src={lambdaBudget} margin="-133px 0" />
-        </Slide>
-
-        {/* --- Advantages Lambda --- */}
-        <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Lambda advantages 👍
-          </Heading>
-          <List>
-            {this.renderAppearListItem(`Pay for what you use 💸`)}
-            {this.renderAppearListItem(`Clear separation of concerns`)}
-            {this.renderAppearListItem(`AWS integration 🎉`)}
-            {this.renderAppearListItem(`Simple to create and run`)}
-            {this.renderAppearListItem(`Status monitoring ?`)}
-            {this.renderAppearListItem(`Simple task concurency - 1000 default`)}
-          </List>
-        </Slide>
-
-        {/* --- Lambda monitoring --- */}
-        <Slide bgColor="quaternary">
-          <Image src={lambdaMonitoring} />
-        </Slide>
-
-        {/* --- Disadvantages Lambda --- */}
-        <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Lambda disadvantages 👎
-          </Heading>
-          <List>
-            {this.renderAppearListItem(
-              `Initial learning required - different concept`,
-            )}
-            {this.renderAppearListItem(`Debugging - console.logs everywhere`)}
-            {this.renderAppearListItem(`Local development / cloud testing ☁️`)}
-            {this.renderAppearListItem(
-              `Lambda / repositories ratio + deployment`,
-            )}
-            {this.renderAppearListItem(`AWS IAM - rights to other services...`)}
-            {this.renderAppearListItem(`Vendor / cloud lock-in 🔒`)}
-          </List>
-        </Slide>
-
-        {/* --- How to Lambda --- */}
-        <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            How-to Lambda
-          </Heading>
-          <List>
-            {this.renderAppearListItem(
-              `Lambda is somewhere between function and module`,
-            )}
-            {this.renderAppearListItem(`Lambdas are state-less`)}
-            {this.renderAppearListItem(`If not, use Step Functions`)}
-            {this.renderAppearListItem(`Data flow should be uni-directional`)}
-            {this.renderAppearListItem(`Think of logging from line 0`)}
-            {this.renderAppearListItem(
-              `Running Lambda two times with same data should give same result`,
-            )}
-            {this.renderAppearListItem(
-              `If previous is not possible use dead letter queues`,
-            )}
-          </List>
-        </Slide>
-
-        {/* --- Serverless types --- */}
-        <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Serverless types
-          </Heading>
-          <List>
-            {this.renderAppearListItem(`AWS Lambda`)}
-            {this.renderAppearListItem(`Azure Functions`)}
-            {this.renderAppearListItem(`Google Cloud Functions`)}
-            {this.renderAppearListItem(
-              `Serverless framework + Apache, CloudFlare, Kubeless`,
-            )}
-          </List>
-        </Slide>
-
-        {/* --- Conclusion --- */}
-        <Slide bgColor="secondary" textColor="primary">
-          <Heading size={2} textColor="primary" caps>
-            Conclusion
-          </Heading>
-          <Text size={1} textColor="tertiary" bold>
-            To Lambda or not to Lambda
-          </Text>
-        </Slide>
-
-        {/* --- Questions in conclusion --- */}
-        <Slide bgColor="tertiary" textColor="primary">
-          <Heading size={4} textColor="primary">
-            Would I use Lambda again?
-          </Heading>
-
-          <Text size={1} textColor="secondary" bold>
-            Yes. But not for everything.
-          </Text>
-        </Slide>
-
-        {/* --- Questions in conclusion --- */}
-        <Slide bgColor="tertiary" textColor="primary">
-          <Heading size={4} textColor="primary">
-            Is it suitable for full blown API server?
-          </Heading>
-
-          <Text size={1} textColor="secondary" bold>
-            No. At least not yet.
-          </Text>
-
-          <List textColor="secondary">
-            {this.renderAppearListItem(
-              `Code / repositories / deployment handling`,
-            )}
-            {this.renderAppearListItem(`DB migrations`)}
-            {this.renderAppearListItem(
-              `But maybe for really big teams it could be better?`,
-            )}
-          </List>
-        </Slide>
-
-        {/* --- Good use-cases --- */}
-        <Slide bgColor="tertiary" textColor="primary">
-          <Heading size={4} textColor="primary">
-            Good Lambda use-cases
-          </Heading>
-          <List textColor="secondary">
-            {this.renderAppearListItem(`Single purpose API's`)}
-            {this.renderAppearListItem(`Data processing`)}
-            {this.renderAppearListItem(
-              `AWS services triggers (S3, SQS, API Gateway)`,
-            )}
-            {this.renderAppearListItem(`Ad hoc compute heavy tasks (non-core)`)}
-            {this.renderAppearListItem(`IoT / HW data processing`)}
-          </List>
-        </Slide>
-
-        <Slide bgColor="secondary" textColor="primary">
-          <Heading size={4} textColor="primary">
-            So what is Lambda?
-          </Heading>
-        </Slide>
-
-        <Slide bgColor="secondary" textColor="primary">
-          <Heading size={4} textColor="primary">
-            Another tool in our toolbelt.
-          </Heading>
         </Slide>
 
         <Slide bgColor="primary">
