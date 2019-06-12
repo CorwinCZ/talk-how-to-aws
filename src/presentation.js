@@ -78,12 +78,12 @@ DIS - scalability can be harder to implement - differs on provider. You pay for 
 Notes
 * VPS / EC2 can be made much more relailable - using automated scaling, automated infrastructure deployment. Can be used all across the world. 
 
-When recomended
+When recomended - NOTE - left out from presentation BURI
 
 * For highly specific needs which are not covered by services
 * For migrating existing projects / code bases to multiple locations - migration from on-premise HW
 
-When not recomended
+When not recomended - NOTE - left out from presentation BURI
 * Your needs can be covered by existing services
 * When regulations require from you to own HW on which data / app are
 
@@ -145,6 +145,23 @@ export default class Presentation extends Component {
           <Link href="TODO - add real link" taget="_blank">
             TODO - add real link
           </Link>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={3} textColor="secondary" caps>
+            AWS Disclaimer
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`We are going to talk a lot about AWS`)}
+            {this.renderAppearListItem(`Cause, you know...`)}
+            {this.renderAppearListItem(
+              `It's the only big cloud provider we know.`,
+            )}
+            {this.renderAppearListItem(
+              'AWS is not paying us for this promotion :(',
+            )}
+            {this.renderAppearListItem('Honza is :) ')}
+          </List>
         </Slide>
 
         <Slide bgColor="tertiary" textColor="primary">
@@ -275,7 +292,7 @@ export default class Presentation extends Component {
             {this.renderAppearListItem(
               `Run server and client app on the Raspbery`,
             )}
-            {this.renderAppearListItem(`Uses everything for prototyping`)}
+            {this.renderAppearListItem(`Uses it for prototyping`)}
           </List>
         </Slide>
 
@@ -290,23 +307,6 @@ export default class Presentation extends Component {
           </List>
         </Slide>
 
-        {/*
-          Hobby phase
-Buys RabsperyPi, one or two discs, plugs everything together and works on it
-ADV - cheap and fast to acquire, one time cost, opprotunity to learn new stuff
-DIS - management time is high, lot of non-product related issues (technical overhead). No fail-over - cannot be used in production. 
-
-Note - mention on premise data centers - for information protection, or when HW is your product. 
-Or when HW is part of project - part of car / train / machine
-
-
-Why not recomended:
-* Technical overhead
-* high up-front cost of full server
-* Costly upgrades / downgrades
-* Hard to impelemnt scalability / fail-overs
-        */}
-
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
             Own HW disadvantages 👎
@@ -320,8 +320,287 @@ Why not recomended:
             {this.renderAppearListItem(
               `Not production ready - only for prototyping`,
             )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            When to buy HW
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`Required by law / regulation`)}
+            {this.renderAppearListItem(`When HW is your product`)}
+            {this.renderAppearListItem(`No shit Sherlock ☝️`)}
             {this.renderAppearListItem(
-              `Cost - server was iddle most of the time 💸`,
+              `Software is running detached from network`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            So we are not recomendidng buying own servers... Why?
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`Technical overhead`)}
+            {this.renderAppearListItem(
+              `Requires expertise which is unrelated to your business`,
+            )}
+            {this.renderAppearListItem(`High up-front cost`)}
+            {this.renderAppearListItem(`Costly upgrades / downgrades`)}
+            {this.renderAppearListItem(
+              `Hard to implement scalability / fail-overs`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            First few customers!
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={3} textColor="secondary" caps>
+            Let's tune up a bit
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`Reliability is now really important`)}
+            {this.renderAppearListItem(`Moved the SW to Docker`)}
+            {this.renderAppearListItem(`Buys few VPS / EC2 instances`)}
+            {this.renderAppearListItem(`Deploys and runs SW there`)}
+            {this.renderAppearListItem(
+              `Uses few load-balancers to spread the load`,
+            )}
+            {this.renderAppearListItem(
+              `Note - VPS = [VPS, EC2, VDS, any virtualization type]`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            VPS advantages 👍
+          </Heading>
+          <List>
+            {this.renderAppearListItem(
+              `You don't care about HW and it's problems`,
+            )}
+            {this.renderAppearListItem(`You pay someone to deal with them`)}
+            {this.renderAppearListItem(
+              `You are paing for computation power / storage space`,
+            )}
+            {this.renderAppearListItem(
+              `VPS can be up/down scaled - can be easy / hard`,
+            )}
+            {this.renderAppearListItem(
+              `App can be in multiple geological locations`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            VPS disadvantages 👎
+          </Heading>
+          <List>
+            {this.renderAppearListItem(
+              `Scalability can be hard / tricky to do`,
+            )}
+            {this.renderAppearListItem(`You pay for reserved power`)}
+            {this.renderAppearListItem(`So you pay iddle time too`)}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Few notes on VPS
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`You can do really a lot with VPS`)}
+            {this.renderAppearListItem(
+              `Huge part of web-apps are running on some sort of virtualization`,
+            )}
+            {this.renderAppearListItem(
+              `Automatic scaling can be done with them`,
+            )}
+            {this.renderAppearListItem(`Automatic deployment too`)}
+            {this.renderAppearListItem(`It differs a lot based on provider`)}
+          </List>
+        </Slide>
+
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            Let's grow world-wide!
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            New requirements are up
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`Customers all around the world`)}
+            {this.renderAppearListItem(`Short response times are needed`)}
+            {this.renderAppearListItem(
+              `Some customers are really HUGE - Big Data processing`,
+            )}
+            {this.renderAppearListItem(
+              `const bigData = 'Amount of data which can not be processed on one computer'`,
+            )}
+            {this.renderAppearListItem(`Peak workloads are a concern too`)}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Use cloud services
+          </Heading>
+          <List>
+            {this.renderAppearListItem(
+              `Split the work-heavy task to Lambdas, quques and friends`,
+            )}
+            {this.renderAppearListItem(`Buy managed DB's to ease scaling`)}
+            {this.renderAppearListItem(`Add analytics services to everything`)}
+            {this.renderAppearListItem(
+              `Buy specialized IoT services - AWS IoT SiteWise, AWS IoT Events`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Services advantages 👍
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`Pay for what you use`)}
+            {this.renderAppearListItem(`Parallelization and scaling is easy`)}
+            {this.renderAppearListItem(
+              `Don't care about HW. Or OS running on that HW :)`,
+            )}
+            {this.renderAppearListItem(
+              `Can scale to unlimited data-processing`,
+            )}
+            {this.renderAppearListItem(
+              `Services are offten compatible with standard tools:`,
+            )}
+            {this.renderAppearListItem(`AWS Aurora with MariaDB & PostgreSQL`)}
+            {this.renderAppearListItem(
+              `AWS Elasticsearch service with ElasticSearch (big surprise)`,
+            )}
+            {this.renderAppearListItem(`Guaranteed relailability of service`)}
+            {this.renderAppearListItem(`Distributed system / code`)}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Services disadvantages 👎
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`Distributed system / code`)}
+            {this.renderAppearListItem(`Service capabilities are limited`)}
+            {this.renderAppearListItem(`Vendor lock-in`)}
+            {this.renderAppearListItem(
+              `Services are offten behind newest releases`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            So, I want to start with AWS...
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="tertiary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            How to AWS?
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Problem 1
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`My project is running on VPS`)}
+            {this.renderAppearListItem(
+              `One module takes 80% of resources and time`,
+            )}
+            {this.renderAppearListItem(
+              `Also this module is used only on few requests`,
+            )}
+            {this.renderAppearListItem(
+              `It processes huge texts submited by users`,
+            )}
+            {this.renderAppearListItem(`Extract module to Lambda`)}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Problem 2
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`I have a DB and queue system`)}
+            {this.renderAppearListItem(
+              `It works fine, but requires lot of maintenance`,
+            )}
+            {this.renderAppearListItem(
+              `Business is always pushing why we spend so much time on it,`,
+            )}
+            {this.renderAppearListItem(
+              `when it doesn't provide any value to users 🙄`,
+            )}
+            {this.renderAppearListItem(`Buy managed DB / queue system`)}
+            {this.renderAppearListItem(
+              `Aurora, RDS, ElasticSearch Service, SQS, AWS Dynamo DB`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Problem 3
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`I have a plenty of static content`)}
+            {this.renderAppearListItem(`And users all around the globe`)}
+            {this.renderAppearListItem(`CDN to the rescue!`)}
+            {this.renderAppearListItem(
+              `Jup, CDN can be also considered as a cloud service :)`,
+            )}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Problem 4
+          </Heading>
+          <List>
+            {this.renderAppearListItem(`You know, I have lots, lots of data?`)}
+            {this.renderAppearListItem(`Like... tera / peta bytes of data?`)}
+            {this.renderAppearListItem(`I need to process every single file!`)}
+            {this.renderAppearListItem(`Store them to S3`)}
+            {this.renderAppearListItem(`Trigger Lambda for each file`)}
+          </List>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Problem 5
+          </Heading>
+          <List>
+            {this.renderAppearListItem(
+              `I just need to store results from one form`,
+            )}
+            {this.renderAppearListItem(`That's it`)}
+            {this.renderAppearListItem(`It will run only for a short time`)}
+            {this.renderAppearListItem(`With plenty of users comming in waves`)}
+            {this.renderAppearListItem(`API Gateway sending data to S3`)}
+            {this.renderAppearListItem(
+              `S3 is object storage, data doesn't have to be file :)`,
             )}
           </List>
         </Slide>
@@ -335,15 +614,15 @@ Why not recomended:
             href="http://talk-from-service-to-lambda.surge.sh"
             taget="_blank"
           >
-            http://talk-from-service-to-lambda.surge.sh
+            TODO
           </Link>
           <br />
           <br />
           <Link
-            href="https://github.com/CorwinCZ/talk-from-service-to-lambda"
+            href="https://github.com/CorwinCZ/talk-how-to-aws"
             taget="_blank"
           >
-            https://github.com/CorwinCZ/talk-from-service-to-lambda
+            https://github.com/CorwinCZ/talk-how-to-aws
           </Link>
         </Slide>
       </Deck>
