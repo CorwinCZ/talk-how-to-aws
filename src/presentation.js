@@ -12,15 +12,17 @@ import {
 } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 
-import serverBudget from './assets/server-budget.png';
+// Pictures
+import serverRack from './assets/serverRack.jpg';
 import lambdaDiagram from './assets/lambda-diagram.png';
-import lambdaBudget from './assets/lambda-budget.png';
-import lambdaMonitoring from './assets/lambda-monitoring.png';
-
-// memes
-import letsDoIt from './assets/letsDoIt.jpg';
-import suchLambda from './assets/suchLambda.jpg';
-import easyJob from './assets/easyJob.jpg';
+import vpsImage from './assets/vpsImage.jpg';
+import beesOnTrees from './assets/beesOnTrees.jpg';
+import lambdaSQS from './assets/lambdaSQS.png';
+import apiGatewayLambda from './assets/apiGatewayLambda.png';
+import awsDB from './assets/awsDB.png';
+import cdn from './assets/cdn.png';
+import snowMobile from './assets/snowMobile.jpg';
+import s3Bucket from './assets/s3bucket.png';
 
 require('normalize.css');
 
@@ -158,9 +160,9 @@ export default class Presentation extends Component {
               `It's the only big cloud provider we know.`,
             )}
             {this.renderAppearListItem(
-              'AWS is not paying us for this promotion :(',
+              'AWS is not paying us for this promotion 💸',
             )}
-            {this.renderAppearListItem('Honza is :) ')}
+            {this.renderAppearListItem('Honza is :) 💰')}
           </List>
         </Slide>
 
@@ -211,6 +213,10 @@ export default class Presentation extends Component {
           </List>
         </Slide>
 
+        <Slide bgColor="quaternary">
+          <Image src={serverRack} />
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={3} textColor="secondary" caps>
             Buy virtual server
@@ -228,6 +234,10 @@ export default class Presentation extends Component {
           </List>
         </Slide>
 
+        <Slide bgColor="quaternary">
+          <Image src={vpsImage} />
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={3} textColor="secondary" caps>
             Buy pre-made services
@@ -242,6 +252,10 @@ export default class Presentation extends Component {
             {this.renderAppearListItem(`Run your software on it`)}
             {this.renderAppearListItem(`Bee happy tree 🐝 🐝 🐝 🌳`)}
           </List>
+        </Slide>
+
+        <Slide bgColor="quaternary">
+          <Image src={lambdaDiagram} />
         </Slide>
 
         <Slide bgColor="tertiary" textColor="primary">
@@ -274,6 +288,10 @@ export default class Presentation extends Component {
               `Becomes 🦄 start-up - grows world-wide`,
             )}
           </List>
+        </Slide>
+
+        <Slide bgColor="quaternary">
+          <Image src={beesOnTrees} />
         </Slide>
 
         <Slide bgColor="tertiary" textColor="primary">
@@ -346,7 +364,7 @@ export default class Presentation extends Component {
             {this.renderAppearListItem(
               `Requires expertise which is unrelated to your business`,
             )}
-            {this.renderAppearListItem(`High up-front cost`)}
+            {this.renderAppearListItem(`High up-front cost 💰 💰 💰`)}
             {this.renderAppearListItem(`Costly upgrades / downgrades`)}
             {this.renderAppearListItem(
               `Hard to implement scalability / fail-overs`,
@@ -362,7 +380,7 @@ export default class Presentation extends Component {
 
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={3} textColor="secondary" caps>
-            Let's tune up a bit
+            Let's tune up a bit 📈
           </Heading>
           <List>
             {this.renderAppearListItem(`Reliability is now really important`)}
@@ -373,7 +391,7 @@ export default class Presentation extends Component {
               `Uses few load-balancers to spread the load`,
             )}
             {this.renderAppearListItem(
-              `Note - VPS = [VPS, EC2, VDS, any virtualization type]`,
+              `const VPS = ['VPS', 'EC2', 'VDS', 'any virtualization type'];`,
             )}
           </List>
         </Slide>
@@ -419,7 +437,7 @@ export default class Presentation extends Component {
           <List>
             {this.renderAppearListItem(`You can do really a lot with VPS`)}
             {this.renderAppearListItem(
-              `Huge part of web-apps are running on some sort of virtualization`,
+              `Huge part of web-apps are running on some sort of virtualization 🎉`,
             )}
             {this.renderAppearListItem(
               `Automatic scaling can be done with them`,
@@ -440,10 +458,10 @@ export default class Presentation extends Component {
             New requirements are up
           </Heading>
           <List>
-            {this.renderAppearListItem(`Customers all around the world`)}
+            {this.renderAppearListItem(`Customers all around the world 🌍`)}
             {this.renderAppearListItem(`Short response times are needed`)}
             {this.renderAppearListItem(
-              `Some customers are really HUGE - Big Data processing`,
+              `Some customers are really HUGE - Big Data processing 💾`,
             )}
             {this.renderAppearListItem(
               `const bigData = 'Amount of data which can not be processed on one computer'`,
@@ -461,11 +479,17 @@ export default class Presentation extends Component {
               `Split the work-heavy task to Lambdas, quques and friends`,
             )}
             {this.renderAppearListItem(`Buy managed DB's to ease scaling`)}
-            {this.renderAppearListItem(`Add analytics services to everything`)}
+            {this.renderAppearListItem(
+              `Add analytics services to everything 📈`,
+            )}
             {this.renderAppearListItem(
               `Buy specialized IoT services - AWS IoT SiteWise, AWS IoT Events`,
             )}
           </List>
+        </Slide>
+
+        <Slide bgColor="quaternary">
+          <Image src={lambdaSQS} />
         </Slide>
 
         <Slide bgColor="primary" textColor="tertiary">
@@ -507,7 +531,7 @@ export default class Presentation extends Component {
           </List>
         </Slide>
 
-        <Slide bgColor="tertiary" textColor="primary">
+        <Slide bgColor="secondary" textColor="primary">
           <Heading size={4} textColor="primary">
             So, I want to start with AWS...
           </Heading>
@@ -538,6 +562,10 @@ export default class Presentation extends Component {
           </List>
         </Slide>
 
+        <Slide bgColor="quaternary">
+          <Image src={apiGatewayLambda} />
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
             Problem 2
@@ -560,6 +588,10 @@ export default class Presentation extends Component {
           </List>
         </Slide>
 
+        <Slide bgColor="quaternary">
+          <Image src={awsDB} />
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
             Problem 3
@@ -574,6 +606,10 @@ export default class Presentation extends Component {
           </List>
         </Slide>
 
+        <Slide bgColor="quaternary">
+          <Image src={cdn} />
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>
             Problem 4
@@ -585,6 +621,10 @@ export default class Presentation extends Component {
             {this.renderAppearListItem(`Store them to S3`)}
             {this.renderAppearListItem(`Trigger Lambda for each file`)}
           </List>
+        </Slide>
+
+        <Slide bgColor="quaternary">
+          <Image src={snowMobile} />
         </Slide>
 
         <Slide bgColor="primary" textColor="tertiary">
@@ -603,6 +643,10 @@ export default class Presentation extends Component {
               `S3 is object storage, data doesn't have to be file :)`,
             )}
           </List>
+        </Slide>
+
+        <Slide bgColor="quaternary">
+          <Image src={s3Bucket} />
         </Slide>
 
         <Slide bgColor="primary">
