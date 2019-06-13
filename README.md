@@ -2,4 +2,4 @@
 
 This repository host source code for my presentation.
 
-TODO - add link to presentation after it is deployed
+http://talk-how-to-aws.surge.sh

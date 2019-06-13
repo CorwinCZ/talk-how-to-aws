@@ -142,8 +142,8 @@ export default class Presentation extends Component {
             Jakub Buriánek
           </Text>
           <br />
-          <Link href="TODO - add real link" taget="_blank">
-            TODO - add real link
+          <Link href="http://talk-how-to-aws.surge.sh" taget="_blank">
+            http://talk-how-to-aws.surge.sh
           </Link>
         </Slide>
 
@@ -610,11 +610,8 @@ export default class Presentation extends Component {
             Discussion & Q&A
           </Heading>
           <br />
-          <Link
-            href="http://talk-from-service-to-lambda.surge.sh"
-            taget="_blank"
-          >
-            TODO
+          <Link href="http://talk-how-to-aws.surge.sh" taget="_blank">
+            http://talk-how-to-aws.surge.sh
           </Link>
           <br />
           <br />
